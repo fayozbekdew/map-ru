@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+  .zoom-buttons {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 40%;
+    right: 30px;
+    z-index: 1000;
+  }
+  
+  .zoom-buttons button {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-width: 50px;
+    padding: 10px;
+    margin: 5px;
+    font-weight: bold;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .zoom-buttons button:hover {
+    background-color: #f0f0f0;
+  }
+
+  /* map-input */
+  .map-input{
+    font-size: 14px;
+    border: 1px solid black;
+    border-radius: 4px;
+    background: transparent;
+    height: 48px;
+    width: 100%;
+    max-width: 500px;
+    /* Kengroq qilish */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
