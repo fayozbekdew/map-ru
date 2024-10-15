@@ -7,6 +7,7 @@ import MapEl from "../sections/Map";
 function UserPage({pass}) {
   const [searchEl, setSearchEl] = useState([]);
   const [places, setPlaces] = useState([]);
+  // const [searchLocation,setSearchLocation] = useState(null)
   let [DATA, setData] = useState([]); 
   useEffect(() => {
     const fetchObjects = async () => {
@@ -24,7 +25,7 @@ function UserPage({pass}) {
   console.log(DATA)
   return (
     <div className="w-full h-screen">
-      <Header setSearchEl={setSearchEl} setPlaces={setPlaces} places={places} data={DATA} pass={pass} />
+      <Header setSearchEl={setSearchEl}  setPlaces={setPlaces} places={places} data={DATA} pass={pass} />
       <MapEl setSearchEl={setSearchEl} searchEl={searchEl} places={places} />
     </div>
   );
