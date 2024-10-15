@@ -51,7 +51,7 @@ function Input({ placeholder, type, label, img, height, setSearchEl, places }) {
         .then(({ rosreestrData, address }) => {
           if (address) {
             return fetch(
-              `https://geocode-maps.yandex.ru/1.x/?apikey=59877cbf-2654-4cfc-b2bc-626e1807065f&geocode=${address} ${number}&format=json`
+              `https://geocode-maps.yandex.ru/1.x/?apikey=59877cbf-2654-4cfc-b2bc-626e1807065f&geocode=${address}&format=json`
             )
               .then((response) => response.json())
               .then((geocodeData) => {
