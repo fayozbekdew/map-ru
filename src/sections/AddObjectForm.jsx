@@ -15,7 +15,7 @@ function AddObjectForm() {
     function fetching(number) {
       number = number.trim()
       fetch(
-        `https://rosreestr.ru.net/fir_rest/api/gkn_egrp/${number}?token=9ee3cf9be49e095f833f65cc9c8147e525a4d6c6`
+        `https://rosreestr.ru.net/fir_rest/api/gkn_egrp/${number}?token=f30d116c1242a6247a67105da1f97a25b029026b`
       )
         .then((response) => response.json())
         .then((data) => {
