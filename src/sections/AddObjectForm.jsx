@@ -11,9 +11,9 @@ function AddObjectForm() {
   const navigate = useNavigate();
   function onSubmit(data) {
     const { kadastreNumber } = data;
-    kadastreNumber.split(",").map((number) => fetching(number));
-
+   kadastreNumber.trim().replaceAll(/,|\s|\n/g, ',').split(',').map((number) => fetching(number));
     function fetching(number) {
+      number = number.trim()
       fetch(
         `https://rosreestr.ru.net/fir_rest/api/gkn_egrp/${number}?token=9ee3cf9be49e095f833f65cc9c8147e525a4d6c6`
       )
