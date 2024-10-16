@@ -26,7 +26,7 @@ function UserPage({pass}) {
   return (
     <div className="w-full h-screen">
       <Header setSearchEl={setSearchEl}  setPlaces={setPlaces} places={places} data={DATA} pass={pass} />
-      <MapEl setSearchEl={setSearchEl} searchEl={searchEl} places={places} />
+      <MapEl setPlaces={setPlaces} places={places} />
     </div>
   );
 }

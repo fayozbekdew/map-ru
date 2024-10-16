@@ -4,16 +4,17 @@ import { CloseBtn, Marker, MarkerSearch, SearchImg, StoryImg } from "../assets";
 import Modal from "react-modal";
 import { MapContext } from "../contex/contex";
 import { useContext } from "react";
+import { supabase } from "../lib/supabaseClient";
+import { toast } from "react-toastify";
 
 Modal.setAppElement("#root");
 
-const MapEl = ({ searchEl, setSearchEl, places }) => {
+const MapEl = ({ setPlaces, places }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedPlace, setSelectedPlace] = useState(null);
   const [userLocation, setUserLocation] = useState(null);
   const [center, setCenter] = useState([55.751574, 37.573856]);
   const { searchLocationEl, searchLocation } = useContext(MapContext);
-  // Obyektlar ma'lumotlari (taxminiy 5 ta obyekt)
   const [zoom, setZoom] = useState(10);
   const handleZoomIn = () => {
     setZoom((prevZoom) => Math.min(prevZoom + 1, 18)); // Maksimal zoom darajasi 18
@@ -32,7 +33,7 @@ const MapEl = ({ searchEl, setSearchEl, places }) => {
     setSelectedPlace(null);
   };
   useEffect(() => {
-    // Foydalanuvchining joylashuvini aniqlash
+  
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const { latitude, longitude } = position.coords;
@@ -49,9 +50,25 @@ const MapEl = ({ searchEl, setSearchEl, places }) => {
       setCenter(searchLocationEl?.koordinates);
       setZoom(15);
     }
-    console.log(111);
   }, [searchLocationEl]);
-console.log(searchLocationEl);
+function deleteElement(id){
+  supabase
+      .from("objects")
+      .delete()
+      .eq("id", id)
+      .then((res) => {
+        toast("Объект успешно удален", {
+          type: "success",
+          position: "top-right",
+        });
+        fetchObjects();
+      })
+      .catch((error) => {
+        console.error("Error deleting object:", error);
+      });
+      setPlaces(places.filter(place => place.id !== id));
+      closeModal();
+}
   return (
     <YMaps query={{ apikey: "59877cbf-2654-4cfc-b2bc-626e1807065f" }}>
       {searchLocationEl !== null ? (
@@ -231,6 +248,12 @@ console.log(searchLocationEl);
             className="absolute top-2 right-2"
           />
         </button>
+        <span className="sticky bottom-[-15px] left-[50%] flex items-center justify-center bg-white w-full h-[70px] ">
+        <button onClick={() => deleteElement(selectedPlace?.id)} className="text-center py-2 bg-red-400 h-10 w-[95%] flex items-center justify-center text-white font-semibold text-[18px] rounded-md  cursor-pointer">
+        Удалить информацию
+        </button>
+        </span>
+       
       </Modal>
     </YMaps>
   );

@@ -22,7 +22,7 @@ function Header({ setSearchEl, setPlaces, places, data, setSearchLocation }) {
         height="50px"
         setSearchEl={setSearchEl}
       />
-      <select
+      {/* <select
         onChange={(e) => selectStatus(e.target.value)}
         className="bg-gray-200 text-black border border-black pl-1  w-[100px] h-[50px] rounded-md flex items-center justify-center"
       >
@@ -34,7 +34,7 @@ function Header({ setSearchEl, setPlaces, places, data, setSearchLocation }) {
         <option value="сельскохозяйственного">
           земли сельскохозяйственного назначения{" "}
         </option>
-      </select>
+      </select> */}
       <button
         onClick={() => navigate("/add")}
         className="bg-gray-200 text-black border border-black pl-1  w-[100px] h-[50px] rounded-md flex items-center justify-center"
